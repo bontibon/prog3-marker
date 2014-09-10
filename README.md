@@ -36,7 +36,11 @@ A **Rule** can have the following properties:
   - *integer* `maximum` (optional)
     - the maximum value that will be added/deducted for the rule or the rule's children
   - *integer* `value` (optional)
-    - the point value of the rule (can be positive or negative)
+    - the point value of the rule (can be positive or negative). Rules that have children cannot has this property.
+  - *integer* `child-count` (optional)
+    - the number of active children required to award the `child-bonus`.
+  - *integer* `child-bonus` (optional)
+    - the bonus value that will be applied to the final mark.
 
 ## License
 

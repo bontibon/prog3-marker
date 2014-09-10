@@ -42,24 +42,37 @@ define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
       return arr;
     },
 
-    _calculateRuleValue: function(rule, value, map) {
+    _calculateRuleValue: function(rule, value, map, child) {
+      var id = rule.id;
+      if (!_.has(map, id)) {
+        map[id] = {
+          subvalue: 0,
+          childIds: {},
+          bonusAwarded: false
+        };
+      }
+      if (child && child.id) {
+        var childId = child.id;
+        map[id].childIds[childId] = true;
+        if (rule.has('child-bonus') && rule.has('child-count') &&
+            _.size(map[id].childIds) >= rule.get('child-count') && !map[id].bonusAwarded) {
+          value += rule.get('child-bonus');
+          map[id].bonusAwarded = true;
+        }
+      }
       if (rule.has('maximum')) {
         var maximum = rule.get('maximum');
-        var id = rule.id;
-        if (!_.has(map, id)) {
-          map[id] = 0;
+        if ((maximum < 0 && value + map[id].subvalue < maximum) ||
+            (maximum > 0 && value + map[id].subvalue > maximum)) {
+          value = maximum - map[id].subvalue;
         }
-        if ((maximum < 0 && value + map[id] < maximum) ||
-            (maximum > 0 && value + map[id] > maximum)) {
-          value = maximum - map[id];
-        }
-        map[id] += value;
+        map[id].subvalue += value;
       }
       if (!rule.has('parent')) {
         return value;
       }
       var parent = this.get(rule.get('parent'));
-      return this._calculateRuleValue(parent, value, map);
+      return this._calculateRuleValue(parent, value, map, rule);
     },
 
     // Given a list of applied rules, calculates the number of points that need
