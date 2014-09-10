@@ -1,15 +1,14 @@
 PREFIX = prog3-marker-dist
 
-all: $(PREFIX).zip
-
-$(PREFIX).zip: build
-	zip -r $@ $(PREFIX)/
-
-build: $(PREFIX) $(PREFIX)/index.html $(PREFIX)/LICENSE $(PREFIX)/js \
-       $(PREFIX)/css $(PREFIX)/bower_components
+build: $(PREFIX) $(PREFIX)/README.md $(PREFIX)/index.html $(PREFIX)/LICENSE \
+       $(PREFIX)/js $(PREFIX)/css $(PREFIX)/bower_components
+	zip -r $(PREFIX).zip $(PREFIX)/
 
 $(PREFIX):
 	mkdir -p $@
+
+$(PREFIX)/README.md: README.md
+	cp $< $@
 
 $(PREFIX)/index.html: index.html
 	cp $< $@
@@ -63,4 +62,4 @@ $(PREFIX)/bower_components: bower_components/
 clean:
 	rm -rf $(PREFIX)/ $(PREFIX).zip
 
-.PHONY: all build clean
+.PHONY: build clean
