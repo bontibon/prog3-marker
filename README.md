@@ -31,7 +31,7 @@ A **Rule** can have the following properties:
     - a unique identifier (primary key) for the rule
   - *string* `description` (required)
     - a helpful description of the rule
-  - *string* `parent` (optional)
+  - *string|integer* `parent` (optional)
     - the `id` of the parent rule
   - *integer* `maximum` (optional)
     - the maximum value that will be added/deducted for the rule or the rule's children
