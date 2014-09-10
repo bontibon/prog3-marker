@@ -1,0 +1,103 @@
+/**
+ * Header
+ */
+
+header {
+  height: 50px;
+  border-bottom: solid 2px #dcdcdc;
+}
+
+header h1,
+header form {
+  display: inline-block;
+  line-height: 50px;
+}
+
+header h1 {
+  font-size: 30px;
+  margin: 0 1em 0 0;
+  padding: 0 0.2em;
+}
+
+header form > a {
+  background: #34689E;
+  padding: 3px 6px;
+  margin: 0 2px;
+  color: #FFF;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #A7A7A7;
+}
+
+/**
+ * Code viewer
+ */
+main {
+  position: absolute;
+  top: 52px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 16px;
+}
+
+.CodeMirror {
+  height: 100%;
+}
+
+.CodeMirror-gutters,
+.CodeMirror-gutter-elt {
+  cursor: pointer;
+}
+
+.cm-token-tab {
+  background: #F0DADA;
+}
+
+.activeLine {
+  background: rgba(255, 255, 0, 0.4);
+}
+
+.line-hasComment {
+  width: 2em;
+}
+
+.line-hasComment-el {
+  font-weight: bold;
+  color: #FF0000;
+  width: 100%;
+  text-align: right;
+  box-sizing: border-box;
+  padding: 0 3px;
+}
+
+/**
+ * Line comment
+ */
+.line-comment {
+  font-family: sans-serif;
+}
+
+.line-comment > div {
+  padding: 15px 0;
+}
+
+.line-comment ul.dropdown-a3d44 {
+  position: static;
+}
+
+.line-comment span.remove-token-group-53474 {
+  font-weight: bold;
+  padding: 2px;
+}
+
+.line-comment div.autocomplete-container-7a26d {
+  border-color: 0;
+  box-shadow: 0 0 10px #A5A5A5;
+  background: #FFF;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+}

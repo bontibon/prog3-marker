@@ -1,0 +1,12 @@
+{
+  "name": "prog3-marker",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "normalize-css": "~3.0.1",
+    "requirejs": "~2.1.14",
+    "backbone": "~1.1.2",
+    "codemirror": "~4.5.0",
+    "autocompletejs": "5d4caf2fbecb6f2d12a0521b4a3370f552a833b8"
+  }
+}
