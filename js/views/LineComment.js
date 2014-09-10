@@ -90,9 +90,10 @@ define(['underscore', 'backbone', 'autocomplete'], function(_, Backbone) {
           // New rule
           var parentId;
           if (cur.length > 1) {
-            parentId = rules.at(cur[cur.length - 2].value).get('id')
+            parentId = rules.get(cur[cur.length - 2].value).get('id')
           }
           var newRule = new rules.model({
+            id: _.uniqueId(),
             parent: parentId
           });
           newRule.loadString(value);
