@@ -34,6 +34,11 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
       // Assignment worth
       this.$worth = this.$('#input-worth');
       this._changeWorth();
+
+      // Current mark
+      this.$currentMark = this.$('#lbl-current-mark');
+      this.listenTo(this.model, 'change:text', this._updateCurrentMark);
+      this.listenTo(this.model.get('lines'), 'change', this._updateCurrentMark);
     },
 
     _load: function() {
@@ -46,6 +51,11 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
 
     _rulesError: function(str) {
       alert('Rules error: ' + str);
+    },
+
+    _updateCurrentMark: function() {
+      var value = this.model.isValid() ? this.model.calculateMark().mark : 0;
+      this.$currentMark.text(value);
     },
 
     _loadRules: function() {
