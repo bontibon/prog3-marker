@@ -81,6 +81,9 @@ define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
       var total = 0;
       var parents = {};
       arr.forEach(function(rule) {
+        if (!rule.has('value')) {
+          return;
+        }
         var value = rule.get('value');
         total += this._calculateRuleValue(rule, value, parents);
       }, this);
