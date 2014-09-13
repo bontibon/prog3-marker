@@ -20,13 +20,19 @@ header h1 {
 }
 
 header form > a {
-  background: #34689E;
-  padding: 3px 6px;
-  margin: 0 2px;
+  background: #9E3452;
   color: #FFF;
+  padding: 5px 10px;
+  margin: 0 2px;
   text-decoration: none;
-  border-radius: 5px;
-  box-shadow: 0 0 3px #A7A7A7;
+  cursor: pointer;
+}
+
+header form select {
+  border: solid 1px #A0A0A0;
+  padding: 1px 5px;
+  background: transparent;
+  cursor: pointer;
 }
 
 /**
