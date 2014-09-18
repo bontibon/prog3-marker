@@ -28,9 +28,9 @@ header form > a {
   cursor: pointer;
 }
 
-header form select {
+header form input[type=number] {
   border: solid 1px #A0A0A0;
-  padding: 1px 5px;
+  padding: 4px 3px;
   background: transparent;
   cursor: pointer;
 }
