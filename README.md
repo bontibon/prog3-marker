@@ -7,9 +7,10 @@ Single-page application to aid in the marking of programming assignments.
 Releases are available on the [GitHub project page](https://github.com/bontibon/prog3-marker/releases). Building from source can be done in the following manner:
 
 1. Clone or download an archived copy of the source code repository.
-2. Install [Bower](http://bower.io/).
-3. Run `bower install` inside of the source code directory to install dependencies.
-4. Run `make` to build release.
+2. Install [Node.js](http://nodejs.org/) and [Bower](http://bower.io/).
+3. Run `npm install` and `bower install` inside of the source code directory to install dependencies.
+4. Add rules to the `rules.json` file.
+5. Run `npm start` to start server.
 
 ## Documentation
 
