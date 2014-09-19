@@ -6,25 +6,7 @@
 define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
   var collection = Backbone.Collection.extend({
     model: Rule,
-
-    initialize: function() {
-      this._fileReader = new FileReader();
-      this._fileReader.addEventListener('load', this._fileLoaded.bind(this));
-    },
-
-    loadFile: function(file) {
-      this._fileReader.readAsText(file);
-    },
-
-    _fileLoaded: function(e) {
-      var text = e.target.result;
-      try {
-        var json = JSON.parse(text);
-        this.add(json);
-      } catch (ex) {
-        this.trigger('fileError', ex.toString());
-      }
-    },
+    url: 'api/v1/rules',
 
     getCompleteDescription: function(rule) {
       var arr = [];

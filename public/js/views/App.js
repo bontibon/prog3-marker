@@ -11,14 +11,14 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
     events: {
       'click #btn-save': '_save',
       'click #btn-load': '_load',
-      'click #btn-load-rules': '_loadRules',
       'change #input-worth': '_changeWorth'
     },
 
     initialize: function() {
       // Marking scheme
       var rules = new Rules();
-      this.listenTo(rules, 'fileError', this._rulesError);
+      rules.fetch();
+      this.listenTo(rules, 'error', this._rulesError);
       this.model.set('rules', rules);
 
       // Editor
@@ -49,21 +49,13 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
       return false;
     },
 
-    _rulesError: function(str) {
-      alert('Rules error: ' + str);
+    _rulesError: function(rules, err) {
+      alert('Rules error: ' + err.statusText);
     },
 
     _updateCurrentMark: function() {
       var value = this.model.isValid() ? this.model.calculateMark().mark : 0;
       this.$currentMark.text(value);
-    },
-
-    _loadRules: function() {
-      var $input = $('<input>')
-        .attr('type', 'file')
-        .on('change', this._rulesFileChanged.bind(this));
-      $input.click();
-      return false;
     },
 
     // Triggered when a file is selected from the input box.
@@ -73,14 +65,6 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
         return;
       }
       this.model.loadFile(files[0]);
-    },
-
-    _rulesFileChanged: function(e) {
-      var files = e.currentTarget.files;
-      if (files.length <= 0) {
-        return;
-      }
-      this.model.get('rules').loadFile(files[0]);
     },
 
     // Triggered when page is about to be unloaded.
