@@ -5,7 +5,7 @@
 
 define(['backbone', 'models/Line', 'collections/Lines'],
     function(Backbone, Line, Lines) {
-  var model = Backbone.Model.extend({
+  return Backbone.Model.extend({
 
     initialize: function() {
       // Initialize attributes
@@ -91,5 +91,4 @@ define(['backbone', 'models/Line', 'collections/Lines'],
       return header + this.get('text');
     }
   });
-  return model;
 });

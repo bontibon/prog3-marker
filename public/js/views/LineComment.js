@@ -4,7 +4,7 @@
  */
 
 define(['underscore', 'backbone', 'autocomplete'], function(_, Backbone) {
-  var view = Backbone.View.extend({
+  return Backbone.View.extend({
     tagName: 'div',
     className: 'line-comment',
 
@@ -123,5 +123,4 @@ define(['underscore', 'backbone', 'autocomplete'], function(_, Backbone) {
       this.ac.focus();
     }
   });
-  return view;
 });

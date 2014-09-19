@@ -6,7 +6,7 @@
 define(['underscore', 'backbone', 'cm/lib/codemirror', 'views/LineComment',
         'cm/mode/clike/clike', 'cm/addon/display/rulers'],
     function(_, Backbone, CodeMirror, LineComment) {
-  var view = Backbone.View.extend({
+  return Backbone.View.extend({
     initialize: function() {
       // Model
       this.listenTo(this.model, 'change:text', this.renderText);
@@ -78,5 +78,4 @@ define(['underscore', 'backbone', 'cm/lib/codemirror', 'views/LineComment',
       doc.addLineClass(line, 'background', 'activeLine');
     }
   });
-  return view;
 });

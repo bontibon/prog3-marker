@@ -4,7 +4,7 @@
  */
 
 define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
-  var collection = Backbone.Collection.extend({
+  return Backbone.Collection.extend({
     model: Rule,
     url: 'api/v1/rules',
 
@@ -72,5 +72,4 @@ define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
       return total;
     }
   });
-  return collection;
 });

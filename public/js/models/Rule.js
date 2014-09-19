@@ -4,7 +4,7 @@
  */
 
 define(['backbone'], function(Backbone) {
-  var model = Backbone.Model.extend({
+  return Backbone.Model.extend({
     loadString: function(str) {
       var matches = str.match(/^([-+]?\d+):?\s*(.*)$/);
       var obj;
@@ -22,5 +22,4 @@ define(['backbone'], function(Backbone) {
       this.set(obj);
     }
   });
-  return model;
 });

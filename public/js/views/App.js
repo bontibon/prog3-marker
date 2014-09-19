@@ -5,7 +5,7 @@
 
 define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
     function($, Backbone, EditorView, Rules) {
-  var view = Backbone.View.extend({
+  return Backbone.View.extend({
     el: 'body',
 
     events: {
@@ -94,5 +94,4 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
       });
     }
   });
-  return view;
 });
