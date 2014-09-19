@@ -117,10 +117,6 @@ define(['underscore', 'backbone', 'autocomplete'], function(_, Backbone) {
 
     _getRules: function() {
       return this.model.get('document').get('rules');
-    },
-
-    focus: function() {
-      this.ac.focus();
     }
   });
 });
