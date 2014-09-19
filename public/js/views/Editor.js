@@ -49,8 +49,7 @@ define(['underscore', 'backbone', 'cm/lib/codemirror', 'views/LineComment',
       if (hasRules) {
         element = $('<div>').addClass('line-hasComment-el').text('▶')[0];
       }
-      this.editor.setGutterMarker(line.get('number'), 'line-hasComment',
-          element);
+      this.editor.setGutterMarker(line.get('id'), 'line-hasComment', element);
     },
 
     // Triggered when the editor's gutter is clicked

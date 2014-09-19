@@ -43,8 +43,7 @@ define(['backbone', 'models/Line', 'collections/Lines'],
       }
       return lines.add({
         id: lineNumber,
-        document: this,
-        number: lineNumber
+        document: this
       });
     },
 
