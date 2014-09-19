@@ -31,14 +31,14 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
       // Page events
       $(window).on('beforeunload', this._windowUnload.bind(this));
 
-      // Assignment worth
-      this.$worth = this.$('#input-worth');
-      this._changeWorth();
-
       // Current mark
       this.$currentMark = this.$('#lbl-current-mark');
       this.listenTo(this.model, 'change:text', this._updateCurrentMark);
       this.listenTo(this.model.get('lines'), 'change', this._updateCurrentMark);
+
+      // Assignment worth
+      this.$worth = this.$('#input-worth');
+      this._changeWorth();
     },
 
     _load: function() {
@@ -94,6 +94,7 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
     _changeWorth: function() {
       var val = parseInt(this.$worth.val());
       this.model.set('worth', val);
+      this._updateCurrentMark();
     },
 
     // Save document.
