@@ -9,5 +9,4 @@ define(['backbone'], function(Backbone) {
       return this.has('rules') && (this.get('rules').length > 0);
     }
   });
-
 });
