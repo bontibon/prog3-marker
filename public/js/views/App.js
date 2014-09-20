@@ -54,7 +54,7 @@ define(['jquery', 'backbone', 'views/Editor', 'collections/Rules'],
     },
 
     _updateCurrentMark: function() {
-      var value = this.model.isValid() ? this.model.calculateMark().mark : 0;
+      var value = this.model.isValid() ? this.model.calculateFinal().mark : 0;
       this.$currentMark.text(value);
     },
 

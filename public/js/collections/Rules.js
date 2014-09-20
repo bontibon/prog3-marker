@@ -13,7 +13,15 @@ define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
       while (true) {
         var description = rule.get('description');
         if (rule.has('value')) {
-          description += ' [' + rule.get('value') + ']';
+          var value = rule.get('value');
+          description += ' [' + rule.get('value');
+          if (rule.has('possible')) {
+            var possible = rule.get('possible');
+            if (value != possible) {
+              description += '/' + rule.get('possible');
+            }
+          }
+          description += ']';
         }
         arr.unshift(description);
         if (!rule.has('parent')) {
@@ -22,54 +30,6 @@ define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
         rule = this.get(rule.get('parent'));
       }
       return arr;
-    },
-
-    _calculateRuleValue: function(rule, value, map, child) {
-      var id = rule.id;
-      if (!_.has(map, id)) {
-        map[id] = {
-          subvalue: 0,
-          childIds: {},
-          bonusAwarded: false
-        };
-      }
-      if (child && child.id) {
-        var childId = child.id;
-        map[id].childIds[childId] = true;
-        if (rule.has('child-bonus') && rule.has('child-count') &&
-            _.size(map[id].childIds) >= rule.get('child-count') && !map[id].bonusAwarded) {
-          value += rule.get('child-bonus');
-          map[id].bonusAwarded = true;
-        }
-      }
-      if (rule.has('maximum')) {
-        var maximum = rule.get('maximum');
-        if ((maximum < 0 && value + map[id].subvalue < maximum) ||
-            (maximum > 0 && value + map[id].subvalue > maximum)) {
-          value = maximum - map[id].subvalue;
-        }
-        map[id].subvalue += value;
-      }
-      if (!rule.has('parent')) {
-        return value;
-      }
-      var parent = this.get(rule.get('parent'));
-      return this._calculateRuleValue(parent, value, map, rule);
-    },
-
-    // Given a list of applied rules, calculates the number of points that need
-    // to be added to an assignment mark.
-    calculateMark: function(arr) {
-      var total = 0;
-      var parents = {};
-      arr.forEach(function(rule) {
-        if (!rule.has('value')) {
-          return;
-        }
-        var value = rule.get('value');
-        total += this._calculateRuleValue(rule, value, parents);
-      }, this);
-      return total;
     }
   });
 });
