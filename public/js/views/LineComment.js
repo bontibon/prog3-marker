@@ -35,14 +35,14 @@ define(['underscore', 'backbone', 'autocomplete'], function(_, Backbone) {
     },
 
     _addRuleToAutocomplete: function(rule) {
-      var parent = rule.has('parent') ? rule.get('parent') : '_root';
+      var parent = rule.has('parent') ? rule.get('parent').toString() : '_root';
       if (rule.has('value')) {
         this.ac.addOption(parent, {
           optionHTML: rule.escape('description') + ' [' + rule.get('value') + ']',
           value: rule
         });
       } else if (rule.has('id')) {
-        var id = rule.get('id');
+        var id = rule.get('id').toString();
         this.ac.setList(id, {
           options: [],
           allowFreeform: true
