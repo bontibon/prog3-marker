@@ -6,7 +6,7 @@
 define(['backbone'], function(Backbone) {
   return Backbone.Model.extend({
     loadString: function(str) {
-      var matches = str.match(/^([-+]?\d+):?\s*(.*)$/);
+      var matches = str.match(/\[([-+]?\d+)\]\s*$/);
       var obj;
       if (_.isNull(matches)) {
         obj = {
@@ -16,7 +16,7 @@ define(['backbone'], function(Backbone) {
       } else {
         obj = {
           value: parseInt(matches[1]),
-          description: matches[2]
+          description: str.substring(0, str.length - matches[0].length)
         };
       }
       this.set(obj);
