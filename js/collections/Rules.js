@@ -52,7 +52,6 @@ define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
             }
           }
         }
-        // TODO: parent
 
         match = line.match(/\[(-?\d+)?(?:\/(-?\d+))?\]\s*$/);
         if (match) {
@@ -69,7 +68,6 @@ define(['underscore', 'backbone', 'models/Rule'], function(_, Backbone, Rule) {
         previous = model;
         models.push(model);
       }
-      console.log(models);
       return models;
     },
 
